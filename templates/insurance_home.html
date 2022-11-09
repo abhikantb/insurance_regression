@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Insurance</title>
+        <!link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <div class="main">
+            <div class="insurance">
+                <h2>Calculate insurance charges Here</h2>
+
+                <form id="insurance" method="post">
+                    <label>age</label>
+                    <br>
+                    <input type="text" name="age" id="age" placeholder="Enter your age here">
+                    <br><br>
+
+                    <label>sex :</label>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="sex" id="male">
+                    &nbsp;
+                    <spam id="male">male</spam>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="sex" id="female">
+                    &nbsp;
+                    <spam id="female">female</spam>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <br><br>
+
+                    <label>bmi</label>
+                    <br>
+                    <input type="text" name="bmi" id="bmi" placeholder="Enter your bmi here">
+                    <br><br>
+
+                    <label for="children">Quantity (between 1 and 5):</label>
+                    <br>
+                    <input type="text" id="children" name="children" min="1" max="5">
+                    <br><br>
+
+
+                    <label>Smoker :</label>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;
+                    <label>yes</label>&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" name="yes" id="smoker">
+                    &nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>no</label>&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" name="no" id="smoker">
+                    &nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <br><br>
+                
+                    <input type="submit" value="calculate insurance charges" name="charges" id="charges">
+                    <br><br>
+                    {{ charges_result }}
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

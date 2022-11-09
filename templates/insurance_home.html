@@ -6,11 +6,12 @@
         <!link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
+        
         <div class="main">
             <div class="insurance">
                 <h2>Calculate insurance charges Here</h2>
-
-                <form id="insurance" method="post">
+                
+                <form action="/predict" method="POST">
                     <label>age</label>
                     <br>
                     <input type="text" name="age" id="age" placeholder="Enter your age here">
@@ -19,11 +20,11 @@
                     <label>sex :</label>
                     <br>
                     &nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="sex" id="male">
+                    <input type="radio" value='male' name="sex" id="sex">
                     &nbsp;
                     <spam id="male">male</spam>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="sex" id="female">
+                    <input type="radio" value='female' name="sex" id="sex">
                     &nbsp;
                     <spam id="female">female</spam>
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -34,9 +35,9 @@
                     <input type="text" name="bmi" id="bmi" placeholder="Enter your bmi here">
                     <br><br>
 
-                    <label for="children">Quantity (between 1 and 5):</label>
+                    <label for="children">children(between 0 and 5):</label>
                     <br>
-                    <input type="text" id="children" name="children" min="1" max="5">
+                    <input type="text" id="children" name="children" min="0" max="5">
                     <br><br>
 
 
@@ -44,18 +45,29 @@
                     <br>
                     &nbsp;&nbsp;&nbsp;
                     <label>yes</label>&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" name="yes" id="smoker">
+                    <input type="checkbox" value='yes' name="smoker" id="smoker">
                     &nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <label>no</label>&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" name="no" id="smoker">
+                    <input type="checkbox" value='no' name="smoker" id="smoker">
                     &nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <br><br>
                 
-                    <input type="submit" value="calculate insurance charges" name="charges" id="charges">
+                    <label>Select region</label>
+                    &nbsp;&nbsp;&nbsp;
+                    <select id='option' name='option'>
+                        <option value="['1']" id="0" selected disabled hidden>select here</option>
+                        <option value = "southwest" id='southwest' name='southwest'>southwest</option>
+                        <option value = "southeast" id='southeast' name='southeast'>southeast</option>
+                        <option value = "northwest" id='northwest' name='northwest'>northwest</option>  
+                        <option value = "northeast" id='northeast' name='northeast'>northeast</option>
+                    </select>
                     <br><br>
-                    {{ charges_result }}
+
+                    <button type="submit">Calculate insurance charges</button>
+                    <br><br>
+                    {{charges_result}}
                 </form>
             </div>
         </div>

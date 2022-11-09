@@ -1,0 +1,4 @@
+import pandas as pd
+
+input2=pd.DataFrame([[19,'female',28,0,'yes','southwest']])
+print(input2)

@@ -5,10 +5,10 @@ import pandas as pd
 import config
 
 #created basic flask app and name is starting point of app where it will run
-app=Flask(__name__)
+app=Flask(__name__,template_folder='templates')
 
 #load the pickle model
-insurance_model=pickle.load(open('artifacts/insurance_regression.pkl','rb'))
+insurance_model=pickle.load(open(config.model_path,'rb'))
                 
 
 #homepage or localhost url including slash / 
@@ -16,22 +16,28 @@ insurance_model=pickle.load(open('artifacts/insurance_regression.pkl','rb'))
 #go to main directory or upper hirarchy of website/localhost address
 @app.route('/')
 def home():
-    return render_template('templates/insurance_home.html')
+    return render_template('insurance_home.html')
 
 
 @app.route('/predict',methods=['POST'])
 def predict_api():
     age = int(request.form.get('age'))
-    sex = int(request.form.get('sex'))
+    sex = request.form.get('sex')
     bmi = int(request.form.get('bmi'))
-    quantity = int(request.form.get('quantity'))
-    smoker = int(request.form.get('smoker'))
-  
-    print(age,sex,bmi,quantity,quantity,smoker)
+    children = int(request.form.get('children'))
+    smoker = request.form.get('smoker')
+    region= str(request.form.get('region'))
+
+    print(age,sex,bmi,children,smoker)
     
-    data = np.array([[age,sex,bmi,quantity,quantity,smoker]])
-    charges =  insurance_model.predict(data)
-    return render_template('insurance_home.html',charges_result=charges)
+    input_data=pd.DataFrame(data=[[age,sex,bmi,children,smoker,region]],columns=['age','sex','bmi','children','smoker','region'])
+    print(input_data)
+    charges =  insurance_model.predict(input_data)
+  
+    return render_template('insurance_home.html',charges_result='Insurance charges are {}'.format(float(charges)))
 
 if __name__ == "__main__":
-    app.run(debug=True, host=config.host_name,port=config.port_number)
+    app.run(debug=True)
+
+    
+   # app.run(debug=True, host=config.host_name,port=config.port_number)

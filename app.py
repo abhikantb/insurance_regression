@@ -26,9 +26,9 @@ def predict_api():
     bmi = int(request.form.get('bmi'))
     children = int(request.form.get('children'))
     smoker = request.form.get('smoker')
-    region= str(request.form.get('region'))
+    region= request.form.get('region')
 
-    print(age,sex,bmi,children,smoker)
+    print(age,sex,bmi,children,smoker,region)
     
     input_data=pd.DataFrame(data=[[age,sex,bmi,children,smoker,region]],columns=['age','sex','bmi','children','smoker','region'])
     print(input_data)

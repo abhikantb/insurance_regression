@@ -18,23 +18,32 @@ insurance_model=pickle.load(open(config.model_path,'rb'))
 def home():
     return render_template('insurance_home.html')
 
+#first method: getting result through front end application
+# @app.route('/predict',methods=['POST'])
+# def predict_api():
+#     age = int(request.form.get('age'))
+#     sex = request.form.get('sex')
+#     bmi = int(request.form.get('bmi'))
+#     children = int(request.form.get('children'))
+#     smoker = request.form.get('smoker')
+#     region= request.form.get('region')
+#     print(age,sex,bmi,children,smoker,region)
+#     input_data=pd.DataFrame(data=[[age,sex,bmi,children,smoker,region]],columns=['age','sex','bmi','children','smoker','region'])
+#     print(input_data)
+#     charges =  insurance_model.predict(input_data)
+#     return render_template('insurance_home.html',charges_result='Insurance charges are {}'.format(float(charges)))
 
+
+#second method: getting result through json postman app
 @app.route('/predict',methods=['POST'])
 def predict_api():
-    age = int(request.form.get('age'))
-    sex = request.form.get('sex')
-    bmi = int(request.form.get('bmi'))
-    children = int(request.form.get('children'))
-    smoker = request.form.get('smoker')
-    region= request.form.get('region')
 
-    print(age,sex,bmi,children,smoker,region)
-    
-    input_data=pd.DataFrame(data=[[age,sex,bmi,children,smoker,region]],columns=['age','sex','bmi','children','smoker','region'])
+    #get json data from postman app(where json data is stored) with data as a key
+    json_data=request.json['data']
+    input_data=pd.DataFrame(data=[[json_data]],columns=['age','sex','bmi','children','smoker','region'])
     print(input_data)
     charges =  insurance_model.predict(input_data)
-  
-    return render_template('insurance_home.html',charges_result='Insurance charges are {}'.format(float(charges)))
+    return jsonify(charges)
 
 if __name__ == "__main__":
     app.run(debug=True)

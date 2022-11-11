@@ -35,7 +35,7 @@ def predict_api():
 
 
 #second method: getting result through json postman app
-@app.route('/predict',methods=['POST'])
+# @app.route('/predict',methods=['POST'])
 # def predict_api():
 #     #get json data from postman app(where json data is stored) with data as a key
 #     json_data=request.json['data']

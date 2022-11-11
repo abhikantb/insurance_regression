@@ -35,20 +35,23 @@ def predict_api():
 
 
 #second method: getting result through json postman app
-# @app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST'])
 # def predict_api():
-
 #     #get json data from postman app(where json data is stored) with data as a key
 #     json_data=request.json['data']
 #     print(json_data)
-#     array_1=np.array(list(json_data.values())).reshape(1,-1)
-#     print(array_1)
-#     input_data=pd.DataFrame(data=array_1,columns=['age','sex','bmi','children','smoker','region'])
+#     #json_data is in form of dictionary
+
+#     #take only values from json_data----> make a list ---> and put [] outside for making it array 
+#     # and pass it to dataframe
+#     input_data=pd.DataFrame(data=[list(json_data.values())],columns=['age','sex','bmi','children','smoker','region'])
 #     print(input_data)
+
+#     #model prediction
 #     charges =  insurance_model.predict(input_data)
 #     print(charges)
 #     return jsonify(charges[0])   
-    #here if we put only charges then it will be 1d Array jsonify wants 2d array hence we give[0] index
+#     #here if we put only charges then it will be 1d Array jsonify wants 2d array hence we give[0] index
 
 if __name__ == "__main__":
     # app.run(debug=True)

@@ -5,3 +5,4 @@ numpy
 matplotlib
 seaborn
 category_encoders
+gunicorn==19.7.1

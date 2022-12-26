@@ -8,12 +8,12 @@ on:
 
 # Your workflows jobs.
 
- build:
-   runs-on: ubuntu-latest
-   steps:
-     # Check-out your repository.
-     - name: Checkout
-       uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Check-out your repository.
+      - name: Checkout
+        uses: actions/checkout@v2
 
 
 ### ⬇ IMPORTANT PART ⬇ ###

@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 # Your workflows jobs.
-
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:

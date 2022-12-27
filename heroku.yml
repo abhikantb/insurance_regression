@@ -2,7 +2,7 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: bundle exec puma -C config/puma.rb
+    #web: bundle exec puma -C config/puma.rb
   
-  
+    web: gunicorn run:app --bind 0.0.0.0:$PORT 
   

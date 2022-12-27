@@ -3,4 +3,4 @@ sklearn
 pandas
 numpy
 category_encoders
-gunicorn==19.7.2
+gunicorn
